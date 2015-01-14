@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery smartfilter</title>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <style media="screen">
+
+    /* demo styles */
+
+    body {
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: "helvetica", sans-serif;
+      font-weight: thin;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input {
+      max-width: 600px;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #eee;
+      height: 50px;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    input[type=submit] {
+      background: #eee;
+      cursor: pointer;
+    }
+
+    hr {
+      margin: 25px 0;
+      border: 1px solid #eee;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!--
+    Form Example
+  -->
+  <div id="post-form">
+    <h2>Ajax post form</h2>
+
+    <p>
+      this form will post the name and age var to the action url specified
+    </p>
+
+    <form action="server-side-script.html" method="post" action="server-side-script.php">
+      <p>
+        <label>Name</label>
+        <input name="name" type="text">
+      </p>
+
+      <p>
+        <label>Age</label>
+        <input name="age" type="text">
+      </p>
+
+      <p>
+        <input type="submit">
+      </p>
+    </form>
+  </div>
+
+  <hr>
+
+  <div id="post-form">
+    <h2>Ajax get form</h2>
+
+    <p>
+      this form will get the name and age var to the action url specified
+    </p>
+
+    <form action="server-side-script.html" method="get" action="server-side-script.php">
+      <p>
+        <label>Name</label>
+        <input name="name" type="text">
+      </p>
+
+      <p>
+        <label>Age</label>
+        <input name="age" type="text">
+      </p>
+
+      <p>
+        <input type="submit">
+      </p>
+    </form>
+  </div>
+
+  <!-- js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="../src/jquery.formajaxer.min.js"></script>
+  <script>
+
+    (function() {
+      "use strict";
+
+      // call formajaxer
+      $("form").formajaxer({
+        success: function (data) {
+          alert(data);
+        },
+        error: function () {
+          alert("You have sent a request to the server but it has returned an error, you should try this demo on a web server");
+        }
+      });
+
+    }());
+
+  </script>
+
+</body>
+</html>
