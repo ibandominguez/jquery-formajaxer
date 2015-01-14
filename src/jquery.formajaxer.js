@@ -19,8 +19,8 @@
     var opts = {
       action: $this.attr("action"),
       method: $this.attr("method"),
-      success: function (data) {},
-      error: function (data) {}
+      success: function () {},
+      error: function () {}
     };
 
     // extend config
@@ -30,12 +30,15 @@
     $this.submit(function(e){
       e.preventDefault();
 
+      var $form = $(this);
+      var formData = $form.serialize();
+
       $.ajax({
         url: opts.action,
         type: opts.method,
-        data: $this.serialize(),
+        data: formData,
         success: function(data){
-          if ( typeof opts.success === "function" ) opts.success(data);
+          if ( typeof opts.success === "function" ) opts.success(data, $form);
         },
         error: function(){
           if ( typeof opts.error === "function" ) opts.error();
