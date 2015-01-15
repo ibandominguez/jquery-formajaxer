@@ -15,24 +15,24 @@
     // store $(this)
     var $this = $(this);
 
-    // define defaults opts
-    var opts = {
-      action: $this.attr("action"),
-      method: $this.attr("method"),
-      success: function () {},
-      error: function () {}
-    };
-
-    // extend config
-    $.extend( opts, config );
-
     // send ajax req
     $this.submit(function(e){
-      e.preventDefault();
-
+      // helper vars
       var $form = $(this);
       var formData = $form.serialize();
 
+      // define defaults opts
+      var opts = {
+        action: $form.attr("action"),
+        method: $form.attr("method"),
+        success: function () {},
+        error: function () {}
+      };
+
+      // extend config
+      $.extend( opts, config );
+
+      // make ajax call
       $.ajax({
         url: opts.action,
         type: opts.method,
@@ -44,6 +44,9 @@
           if ( typeof opts.error === "function" ) opts.error();
         }
       });
+
+      // prevent default behaviour
+      e.preventDefault();
     });
 
     // return this for method chaining
