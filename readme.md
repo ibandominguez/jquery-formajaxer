@@ -1,5 +1,7 @@
 # jquery-formajaxer
 
+[![Build Status](https://travis-ci.org/ibandominguez/jquery-formajaxer.svg?branch=master)](https://travis-ci.org/ibandominguez/jquery-formajaxer)
+
 > jQuery formajaxer allows you send a form via get or post without having to write the ajax request yourself.
 > This plugin in just a wrapper around $.ajax which main goal is to allow developers to setup a multiuse ajax
 > request controlled by the form html default attrs

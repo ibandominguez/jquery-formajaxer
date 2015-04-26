@@ -1,4 +1,5 @@
 (function ($) {
+
   module('jQuery#formajaxer', {
     setup: function () {
       this.elems = $('#qunit-fixture').children();
@@ -18,7 +19,7 @@
   * test error callback
   * @test
   */
-  test('test error callback', function () {
+  test('error callback', function () {
     var $forms;
 
     $forms = this.elems.formajaxer({
@@ -31,13 +32,14 @@
 
     $forms.first().trigger('submit');
     stop();
+    setTimeout(function () { start(); }, 500); // tmp fix
   });
 
   /**
   * test success callback
   * @test
   */
-  test('test success callback', function () {
+  test('success callback', function () {
     var $forms;
 
     $forms = this.elems.formajaxer({
@@ -50,13 +52,14 @@
 
     $forms.first().trigger('submit');
     stop();
+    setTimeout(function () { start(); }, 500); // tmp fix 
   });
 
   /**
-  * test success callback contains form jquery elem ref
+  * test success callback contains jquery submitted el ref
   * @test
   */
-  test('test success callback', function () {
+  test('success callback contains jquery submitted el ref', function () {
     var $forms;
 
     $forms = this.elems.formajaxer({
@@ -70,6 +73,7 @@
 
     $forms.first().trigger('submit');
     stop();
+    setTimeout(function () { start(); }, 500); // tmp fix
   });
 
 }(jQuery));
