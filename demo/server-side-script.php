@@ -1,3 +1,3 @@
 <?php
 
-echo "hello from the server side!";
+echo json_encode("hello from the server side!");

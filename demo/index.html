@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery smartfilter</title>
+  <title>jQuery formajaxer</title>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,11 +44,6 @@
       cursor: pointer;
     }
 
-    hr {
-      margin: 25px 0;
-      border: 1px solid #eee;
-    }
-
   </style>
 </head>
 <body>
@@ -59,37 +54,24 @@
   <div id="post-form">
     <h2>Ajax post form</h2>
 
-    <p>
-      this form will post the name and age var to the action url specified
-    </p>
+    <p>this form will post the name and age var to the url specified in the action attr</p>
 
-    <form action="server-side-script.html" method="post" action="server-side-script.php">
-      <p>
-        <label>Name</label>
-        <input name="name" type="text">
-      </p>
+    <pre class="prettyprint">
+      // non-opts use
+      $("form").formajaxer();
 
-      <p>
-        <label>Age</label>
-        <input name="age" type="text">
-      </p>
+      // opts use
+      $("form").formajaxer({
+        action: "http://coolsite.com/api/",
+        method: "post",
+        beforeSend: function () { console.log('before'); },
+        complete: function () { console.log('complete'); },
+        error: function () { console.log('error'); },
+        success: function (date) { console.log(data); },
+      });
+    </pre>
 
-      <p>
-        <input type="submit">
-      </p>
-    </form>
-  </div>
-
-  <hr>
-
-  <div id="post-form">
-    <h2>Ajax get form</h2>
-
-    <p>
-      this form will get the name and age var to the action url specified
-    </p>
-
-    <form action="server-side-script.html" method="get" action="server-side-script.php">
+    <form action="/demo/server-side-script.php" method="post">
       <p>
         <label>Name</label>
         <input name="name" type="text">
@@ -107,8 +89,9 @@
   </div>
 
   <!-- js -->
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="../src/jquery.formajaxer.min.js"></script>
+  <script src="/src/jquery-formajaxer.js"></script>
   <script>
 
     (function() {
@@ -116,8 +99,16 @@
 
       // call formajaxer
       $("form").formajaxer({
+        // action: "http://coolsite.com/api/", #specify custom action
+        // method: "post" #specify custom method
+        beforeSend: function () { console.log('before'); },
+        complete: function () { console.log('after'); },
         success: function (data) {
+          // the form is bind to this func
+          // so you have access to jquery magic here
+          // this.slideToggle() ...
           alert(data);
+          this.slideToggle();
         },
         error: function () {
           alert("You have sent a request to the server but it has returned an error, you should try this demo on a web server");

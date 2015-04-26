@@ -1,61 +1,56 @@
-jquery-formajaxer
-=============
+# jquery-formajaxer
 
-jQuery formajaxer allows you send a form via get or post without having to
-writte the ajax request yourself
+> jQuery formajaxer allows you send a form via get or post without having to write the ajax request yourself.
+> This plugin in just a wrapper around $.ajax which main goal is to allow developers to setup a multiuse ajax
+> request controlled by the form html default attrs
 
-.formajaxer( [config] )
+## Getting Started
 
-config
-Type: PlainObject
-An object of containing 4 optional config:
-- config: (object)
-  default: {
-    action: <will grap the action attr form if not specified>,
-    method: <will grap the method attr form if not specified>,
-    success: function(data){},
-    error: function(){}
-  }
+Download the [production version][min] or the [development version][max].
 
+[min]: https://raw.githubusercontent.com/ibandominguez/jquery-jquery-formajaxer/master/dist/jquery.jquery-formajaxer.min.js
+[max]: https://raw.githubusercontent.com/ibandominguez/jquery-jquery-formajaxer/master/dist/jquery.jquery-formajaxer.js
 
-Dependencies
-=============
+In your web page:
 
-jQuery
+```html
+<script src="jquery.js"></script>
+<script src="dist/jquery-formajaxer.min.js"></script>
+<script>
 
-Installation
-=============
+  (function() {
+    "use strict";
 
-Simply clone this repo or if using bower copy and paste this on your terminal:
+    /**
+    * used without options
+    */
+    // this form will submit to the action attr using the
+    // attr method specified
+    $("form").formajaxer();
 
+    /**
+    * used with options
+    */
+    $("form").formajaxer({
+      beforeSend: function () { console.log('before'); },
+      complete: function () { console.log('after'); },
+      success: function (data) {
+        // the form is bind to this func
+        // so you have access to jquery magic here
+        // this.slideToggle() ...
+        alert(data);
+        this.slideToggle();
+      },
+      error: function () {
+        alert("Error");
+      }
+    });
+
+  }());
+
+</script>
 ```
 
-bower install jquery-formajaxer  
+## License
 
-```
-
-Important notes
-=============
-
-Keep in mind you might want to create a proper response from the
-server side, in best scenario a json object with you could you
-to perfom some actions upon success
-
-Usage
-=====
-
-Have a look at /demo/index.html for a more detail explanation on how to use it.
-
-```
-
-// call formajaxer
-$("form").formajaxer({
-  success: function (data) {
-    // do something with the data response
-  },
-  error: function () {
-    alert("You have sent a request to the server but it has returned an error, you should try this demo on a web server");
-  }
-});
-
-```
+MIT © Ibán Domínguez
