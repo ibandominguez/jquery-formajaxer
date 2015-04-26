@@ -8,8 +8,8 @@
 
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.githubusercontent.com/ibandominguez/jquery-jquery-formajaxer/master/dist/jquery.jquery-formajaxer.min.js
-[max]: https://raw.githubusercontent.com/ibandominguez/jquery-jquery-formajaxer/master/dist/jquery.jquery-formajaxer.js
+[min]: https://raw.githubusercontent.com/ibandominguez/jquery-formajaxer/master/dist/jquery.formajaxer.min.js
+[max]: https://raw.githubusercontent.com/ibandominguez/jquery-formajaxer/master/dist/jquery.formajaxer.js
 
 In your web page:
 
