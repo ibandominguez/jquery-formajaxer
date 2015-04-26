@@ -13,7 +13,7 @@
   "repository": "ibandominguez/jquery-formajaxer",
   "license": "MIT",
   "scripts": {
-    "test": "grunt"
+    "test": "grunt test"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
