@@ -28,7 +28,7 @@
           url: opts.action,
           type: opts.method,
           data: formData,
-          beforeSend: function (data) {
+          beforeSend: function () {
             if (typeof opts.beforeSend === "function") { opts.beforeSend.apply($form); }
           },
           complete: function () {
